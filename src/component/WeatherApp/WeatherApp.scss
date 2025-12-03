@@ -2,12 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 
 .search-input {
   width: 100%;
-  max-width: 32rem;
   height: 4rem;
   padding-left: 4rem;
   font-size: 1.25rem;
@@ -48,6 +46,12 @@
   gap: 1rem;
 }
 
+.no-cities {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
 .city-item {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -81,4 +85,14 @@
 .city-coords {
   color: #d1d5db;
   text-align: right;
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+
+  @media (max-width: 320px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

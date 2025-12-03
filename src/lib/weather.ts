@@ -29,3 +29,13 @@ export async function getWeather(lat: number, lon: number) {
 
   return res.json();
 }
+
+export async function getWeatherById(id: number) {
+  const res = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&lang=ua&appid=${API_KEY}`
+  );
+
+  if (!res.ok) throw new Error("Помилка запиту погоди");
+
+  return res.json();
+}

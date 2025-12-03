@@ -1,33 +1,52 @@
-// CityCard.module.scss
-
 .card {
-  width: 100%;
-  max-width: 32rem; /* 2xl */
-  margin-top: 2rem; /* mt-8 */
+  width: 251px;
+  max-width: 32rem;
+  margin-top: 2rem;
   background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px); /* backdrop-blur-md */
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem; /* rounded-2xl */
-  padding: 1.5rem; /* p-6 */
+  border-radius: 1rem;
+  padding: 1.5rem;
   color: white;
-
+  position: relative;
   &:hover {
     background: rgba(255, 255, 255, 0.15);
-    // transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
   }
 }
 
 .title {
-  font-size: 1.875rem; /* text-3xl */
-  font-weight: 700; /* font-bold */
-  margin-bottom: 0.5rem; /* mb-2 */
+  text-decoration: none;
+  color: rgb(182, 182, 182);
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .card-text {
-  font-size: 1.125rem; /* text-lg */
+  font-size: 1.125rem;
+  color: white;
+  text-decoration: none;
 }
 
 .card-description {
   text-transform: capitalize;
+  color: white;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
 }
