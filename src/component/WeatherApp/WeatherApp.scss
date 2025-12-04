@@ -16,6 +16,11 @@
   backdrop-filter: blur(10px);
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
+  background-image: url('/img/search.svg');
+  background-repeat: no-repeat;
+  background-position: 20px center;
+  background-size: 24px;
+  padding-left: 56px;
 
   &::placeholder {
     color: #9ca3af;
@@ -26,7 +31,7 @@
     outline: none;
   }
 
-  background-image: url("/img/search.svg");
+  background-image: url('/img/search.svg');
   background-repeat: no-repeat;
   background-position: 20px center;
   background-size: 24px;

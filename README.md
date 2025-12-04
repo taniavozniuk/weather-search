@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather App
 
-## Getting Started
+A modern weather application built with Next.js 14 using the App Router, server components, dynamic routing, and API routes. The application provides detailed weather information for selected locations using data from the OpenWeather API.
 
-First, run the development server:
+## 🚀 Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Frontend / Framework
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next.js 16 (App Router)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+React Server Components
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Dynamic Routes
 
-## Learn More
+Next.js built‑in error handling (not-found, loading)
 
-To learn more about Next.js, take a look at the following resources:
+SCSS Modules for styling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Date-fns for formatting dates
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Zustand for state menegment
 
-## Deploy on Vercel
+## What's implemented
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Search for cities via OpenWeather API.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Detailed weather for the selected city (temperature, feels like, humidity, pressure, wind, cloudiness, visibility, sunrise/sunset).
+
+Dynamic routes with lat|lon parameters.
+
+Custom API Route /api/weather.
+
+Not Found Page (notFound()).
+
+Loading UI.
+
+Service layer /lib/weather.ts.
+
+SCSS + CSS Grid.
+
+Code formatting via Prettier (npm run format).
+
+[Demo](https://weather-search-git-main-taniavozniuks-projects.vercel.app/)

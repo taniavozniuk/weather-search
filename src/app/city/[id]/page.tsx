@@ -1,9 +1,11 @@
-import { getWeather } from "@/lib/weather";
-import Image from "next/image";
-import Link from "next/link";
-import { format } from "date-fns";
-import "./styles.scss";
-import { enAU } from "date-fns/locale";
+import { getWeather } from '@/lib/weather';
+import Link from 'next/link';
+import { format } from 'date-fns';
+import './styles.scss';
+import { enAU } from 'date-fns/locale';
+import { notFound } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
 
 export default async function CityPage(props: {
   params: Promise<{ id: string }>;
@@ -11,14 +13,14 @@ export default async function CityPage(props: {
   const { id } = await props.params;
   const decoded = decodeURIComponent(id);
 
-  const [latStr, lonStr] = decoded.split("|");
+  const [latStr, lonStr] = decoded.split('|');
 
   const lat = Number(latStr);
   const lon = Number(lonStr);
 
-  if (isNaN(lat) || isNaN(lon)) {
-    return <div>Помилка: некоректний ID міста</div>;
-  }
+  if (isNaN(lat) || isNaN(lon)) return notFound();
+
+  if (!lat || !lon) return notFound();
 
   const weather = await getWeather(lat, lon);
   const temp = Math.round(weather.main.temp);
@@ -39,14 +41,13 @@ export default async function CityPage(props: {
             <p className="country">{weather.sys.country}</p>
           </div>
           <div className="current-time">
-            {format(new Date(), "d MMMM yyyy, EEEE", { locale: enAU })}
+            {format(new Date(), 'd MMMM yyyy, EEEE', { locale: enAU })}
           </div>
         </header>
 
         <div className="current-weather">
           <div className="temperature">
-            {temp}°
-            <span className="feels-like">Feels like {feelsLike}°</span>
+            {temp}°<span className="feels-like">Feels like {feelsLike}°</span>
           </div>
           <p className="description">
             {weather.weather[0].description.charAt(0).toUpperCase() +
@@ -79,12 +80,12 @@ export default async function CityPage(props: {
 
           <div className="detail-card sunrise">
             <div className="icon">Sunrise</div>
-            <div className="value">{format(sunrise, "HH:mm")}</div>
+            <div className="value">{format(sunrise, 'HH:mm')}</div>
           </div>
 
           <div className="detail-card sunset">
             <div className="icon">Sunset</div>
-            <div className="value">{format(sunset, "HH:mm")}</div>
+            <div className="value">{format(sunset, 'HH:mm')}</div>
           </div>
         </div>
 

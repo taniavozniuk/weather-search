@@ -1,7 +1,7 @@
-import { City } from "@/types/typeCity";
-import { Weather } from "@/types/typeWeather";
-import "./CityCard.scss";
-import Link from "next/link";
+import { City } from '@/types/typeCity';
+import { Weather } from '@/types/typeWeather';
+import './CityCard.scss';
+import Link from 'next/link';
 type Props = {
   city: City;
   weather: Weather;
@@ -9,7 +9,6 @@ type Props = {
 };
 export default function CityCard({ city, weather, onRemove }: Props) {
   const cityId = `${city.lat}|${city.lon}`;
-  
 
   return (
     <div className="card">

@@ -1,41 +1,22 @@
-const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-console.log("API_KEY:", API_KEY, "length:", API_KEY?.length);
 export async function searchCity(query: string) {
-  if (!API_KEY) throw new Error("API Key is missing");
-
-  const res = await fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(
-      query
-    )}&limit=5&appid=${API_KEY}`
-  );
-
-  if (!res.ok) {
-    throw new Error("Помилка пошуку міста");
-  }
-
+  const res = await fetch(`/api/search?q=${query}`);
   return res.json();
 }
 
 export async function getWeather(lat: number, lon: number) {
-  if (!API_KEY) throw new Error("API Key is missing");
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    (process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000');
 
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
-  );
+  const res = await fetch(`${baseUrl}/api/weather?lat=${lat}&lon=${lon}`, {
+    cache: 'no-store',
+  });
 
   if (!res.ok) {
-    throw new Error("Помилка отримання погоди");
+    throw new Error(`Failed to fetch weather: ${res.statusText}`);
   }
-
-  return res.json();
-}
-
-export async function getWeatherById(id: number) {
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&lang=ua&appid=${API_KEY}`
-  );
-
-  if (!res.ok) throw new Error("Помилка запиту погоди");
 
   return res.json();
 }
