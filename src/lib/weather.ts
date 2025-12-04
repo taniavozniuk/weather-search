@@ -3,19 +3,17 @@ export async function searchCity(query: string) {
   return res.json();
 }
 
-export async function getWeather(lat: number, lon: number) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    (process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000');
+const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
-  const res = await fetch(`${baseUrl}/api/weather?lat=${lat}&lon=${lon}`, {
-    cache: 'no-store',
-  });
+export async function getWeather(lat: number, lon: number) {
+  if (!API_KEY) throw new Error('API Key is missing');
+
+  const res = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`,
+  );
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch weather: ${res.statusText}`);
+    throw new Error('Помилка отримання погоди');
   }
 
   return res.json();
